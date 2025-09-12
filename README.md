@@ -4,7 +4,7 @@
 
 - #### Step 1: Brainstorm on your own.
 
-    1. 
+    1. As a user, I can...
 
 - #### Step 2: Use an LLM to help expand your perspective.
 

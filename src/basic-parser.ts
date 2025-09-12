@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as readline from "readline";
+import z from "zod";
 
 /**
  * This is a JSDoc comment. Similar to JavaDoc, it documents a public-facing
@@ -35,3 +36,62 @@ export async function parseCSV(path: string): Promise<string[][]> {
   }
   return result
 }
+
+
+
+
+
+
+/*
+Name,Credits,Email
+Nikos Koss,8,nikos@example.com
+*/
+
+const studentRowSchema = z.tuple([z.string(), z.coerce.number(), z.email()]).transform( arr => ({
+  name: arr[0],
+  credits: arr[1],
+  email: arr[2]
+}) );
+
+
+type StudentRow = z.infer<typeof studentRowSchema>;
+
+
+const studentResult = studentRowSchema.safeParse(["Nikos Koss", "8", "nikos@example.com"]);
+const student: StudentRow | undefined = studentResult.data
+
+// if(student !== undefined) {
+//   console.log(student[0])
+// }
+
+// if(studentResult.success) {
+//   console.log(student[0])
+// }
+
+
+
+const jsonString = `{
+  "name": "Nikos Koss",
+  "credits": "8",
+  "email": "nikos@example.com"
+}`;
+
+const nikos = JSON.parse(jsonString);
+
+nikos.name
+nikos.age = "20";
+nikos.credits = 8
+
+console.log(nikos.name.size)
+
+
+// use zod to fix removing "any" type without validation
+const nikosSchema = z.object({
+  name: z.string(),
+  age: z.string(),
+  credits: z.string(),
+  email: z.string()
+});
+
+nikosSchema.safeParse(nikos);
+

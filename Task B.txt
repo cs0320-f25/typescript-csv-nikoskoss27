@@ -48,9 +48,7 @@ And improvements:
 - Documentation and examples
 - Cross-app adaptability
 
-***
-Take note of what it suggests. Is there overlap with what you thought of? What possible concerns did it point out that you may have missed? Where might it have missed the point?
-***
+There is some overlap with what I thought of, such as features involving quotes and delimiters and validation issues involving type erorrs and inconsistent column counts. However, the LLM expanded on these in more detail than I did and added some nuances I hadn't thought of, such as allowing the user to specify the delimiter to be used and handling quotes within quotes. Of course, it also included many other features, edge cases, and improvements I hadn't immediately thought of. It might have missed the point by discussing use cases that might not be necessary for our goals with this parser.
 
 Prompt 2: I’m working on a CSV parser in TypeScript that currently accepts a filename as input and converts rows into strings or objects. What are the most critical features to include in the implementation of this parser, given it needs to be easy to use for diverse developers?
 
@@ -88,6 +86,8 @@ Additional consideration
 - Minimal dependencies
 - Testing and validation
 
+The results from Prompt 2 differed by carefully structuring the different needs developers might have into categories, which makes sense due to the prompt's emphasize on ease of use for diverse developers. Another differences was its emphasis on graceful error handling and over neatness of results Otherwise, it includes many of the same features, edge cases, and improvements as the result from Prompt 1 did.
+
 Prompt 3: What should I include in a CSV parser implementation to handle edges cases and optimize for use by other developers?
 
 This prompt aims to be simpler, causing the LLM to make more guesses about what the user is asking for.
@@ -105,3 +105,5 @@ The LLM noted the following categories (with many features in each):
 - Output formats
 
 It also showed edge case examples, gave optimization tips, described how to improve usability for other developers, gave a comprehensive testing strategy, and mentioned additional considerations (security, internationalization, custom parsers).
+
+The results from Prompt 3 differed by being much more exhaustive than the other two. It seems the reduced context provided in the prompt caused the LLM to give a plethora of suggestions to try to cover whatever needs the user might have--so much so that it would have taken up way too much space for me to include all the suggestions listed under each category. The results are broader and less useful. Plus, they waste more of the reader's time by including irrelevant topics, such as language-specific features, which would have been omitted had the prompt specified the use of TypeScript. Nonetheless, many of the suggestions remain the same and could leader the user in the right direction, particularly if they ask the LLM follow-up questions.

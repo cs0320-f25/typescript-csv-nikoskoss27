@@ -1,0 +1,107 @@
+Step 1
+
+1. The CSV parser should ask whether there are column headers.
+2. It should ignore commas within double quotes when splitting.
+3. It should throw a validation error when an entry is not the expected type.
+4. It should throw a validation error when a row is invalid (doesn't have the expected number of entries).
+
+Step 2
+
+Prompt 1 (provided): I’m working on a CSV parser in TypeScript that currently accepts a filename as input and converts rows into strings or objects. What are some missing features or edge cases that I should consider? What improvements would make it easier for other developers to use in different kinds of apps?
+
+The LLM noted many missing features:
+- Customizable delimiters/quotes
+- Streaming support
+- Header handling options
+- Type conversion/inference
+- Error handling and validation
+- Encoding support
+- Comment skipping
+- CSV writing
+- Multi-threading/workers
+
+Edge cases:
+- Quoted fields with embedded delimiters or newlines
+- Escaped quotes inside fields
+- Unbalanced or malformed quotes
+- Inconsistent column counts
+- Empty files or rows
+- Comments in files
+- Different line endings
+- BOM (Byte Order Mark)
+- Non-standard delimiters
+- Large files
+- Invalid or mixed encodings
+- Multiline headers or data
+- Leading/trailing whitespace
+- Numeric edge cases
+- Locale-specific issues
+
+And improvements:
+- Flexible input sources
+- Async/sync APIs
+- Type safety with generics
+- Configurable options object
+- Browser compatibility
+- Modular and lightweight
+- Performance optimizations
+- Documentation and examples
+- Cross-app adaptability
+
+***
+Take note of what it suggests. Is there overlap with what you thought of? What possible concerns did it point out that you may have missed? Where might it have missed the point?
+***
+
+Prompt 2: I’m working on a CSV parser in TypeScript that currently accepts a filename as input and converts rows into strings or objects. What are the most critical features to include in the implementation of this parser, given it needs to be easy to use for diverse developers?
+
+This prompt emphasizes ease of use by other developers.
+
+The LLM noted several categories to consider:
+
+Configuration options
+- Delimiter
+- Quote character
+- Escape character
+- Newline
+- Encoding
+
+Header and data structure support
+- Header parsing
+- Type casting
+
+Performance and scalability
+- Streaming mode
+- Chunking and preview
+
+Error handling and robustness
+- Graceful error recovery
+- Skipping features
+- Whitespace trimming
+
+API design for usability
+- Async-first API
+- Transform hooks
+- BOM detection
+
+Additional consideration
+- TypeScript ergonomics
+- Minimal dependencies
+- Testing and validation
+
+Prompt 3: What should I include in a CSV parser implementation to handle edges cases and optimize for use by other developers?
+
+This prompt aims to be simpler, causing the LLM to make more guesses about what the user is asking for.
+
+The LLM noted the following categories (with many features in each):
+- Core parsing functionality
+- Edge case handling
+- Performance optimizations
+- Developer-friendly features
+- Testing and robustness
+- Standards compliance
+- Language-specific features
+- Error reporting
+- Logging
+- Output formats
+
+It also showed edge case examples, gave optimization tips, described how to improve usability for other developers, gave a comprehensive testing strategy, and mentioned additional considerations (security, internationalization, custom parsers).

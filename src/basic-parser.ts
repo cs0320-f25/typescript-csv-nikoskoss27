@@ -48,7 +48,6 @@ export async function parseCSV<T>(schema: z.ZodSchema<T> | undefined, path: stri
     parsedData.push(parsedRow);
   }
   return parsedData;
-
   
 }
 

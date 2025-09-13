@@ -23,7 +23,7 @@ test("parseCSV yields only arrays", async () => {
 });
 
 test("parseCSV handles no column headers", async () => {
-  const results = await parseCSV(undefined, PEOPLE_CSV_PATH)
+  const results = await parseCSV(undefined, ANCESTRY_CSV_PATH)
   
   expect(results[0]).toEqual(["Ben", "German"]);
 });

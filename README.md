@@ -4,7 +4,9 @@
 
 - #### Step 1: Brainstorm on your own.
 
-    1. As a user, I can...
+    1. As a user, I can parse a CSV with entries that contain commas, using double quotes or a custom delimiter to distinguish between these entries, so I can have data that includes commas.
+    2. As a user, I can parse CSVs with or without column headers, being able to specify this to the parser, so either CSVs with or without headers will not break the parser.
+    3. 
 
 - #### Step 2: Use an LLM to help expand your perspective.
 
@@ -15,6 +17,8 @@
     Include your notes from above: what were your initial ideas, what did the LLM suggest, and how did the results differ by prompt? What resonated with you, and what didn’t? (3-5 sentences.) 
 
 ### Design Choices
+
+    My parser design takes in two parameters—-a Zod schema and a file path to parse. The schema can be undefined if the user chooses not to provide one. If there is no schema, the parser returns a string[][]. If there is a schema, it returns typed objects T[]. If the data in the CSV do not match the schema, it returns a "Row not valid" error and specifies which row contained the error.
 
 ### 1340 Supplement
 

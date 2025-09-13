@@ -15,7 +15,7 @@ import { z } from "zod";
  * @param path The path to the file being loaded.
  * @returns a "promise" to produce a 2-d array of cell values
  */
-export async function parseCSV<T>(schema: z.ZodSchema<T>, path: string): Promise<string[][]> {
+export async function parseCSV<T>(schema: z.ZodSchema<T> | undefined, path: string): Promise<T[] |string[][]> {
   // This initial block of code reads from a file in Node.js. The "rl"
   // value can be iterated over in a "for" loop. 
   const fileStream = fs.createReadStream(path);
@@ -34,7 +34,20 @@ export async function parseCSV<T>(schema: z.ZodSchema<T>, path: string): Promise
     const values = line.split(",").map((v) => v.trim());
     result.push(values)
   }
+
   if (!schema) return result;
+
+  const parsedData: T[] = [];
+
+  for (const row of result) {
+    if (schema.safeParse(row).success === false) {
+      throw new Error(`Row does not match schema: ${JSON.stringify(row)}`);
+    }
+    const parsedRow = schema.safeParse(row).data;
+    parsedData.push(parsedRow);
+  }
+  return schema.safeParse(result[0]);
+
 
   // Validate and transform the result using the provided schema
   const parsed = result.map(row => schema.safeParse(row));

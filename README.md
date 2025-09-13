@@ -6,7 +6,8 @@
 
     1. As a user, I can parse a CSV with entries that contain commas, using double quotes or a custom delimiter to distinguish between these entries, so I can have data that includes commas.
     2. As a user, I can parse CSVs with or without column headers, being able to specify this to the parser, so either CSVs with or without headers will not break the parser.
-    3. 
+    3. As a user, I know whether my CSV does not match my schema because the parser throws a validation error.
+    4. As a user, I know whether my CSV has an invalid number of entries in a row because the parser throws an error to specify that.
 
 - #### Step 2: Use an LLM to help expand your perspective.
 

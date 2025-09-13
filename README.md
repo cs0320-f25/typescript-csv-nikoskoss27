@@ -135,15 +135,37 @@
 
 - #### 1. Correctness
 
+    - Separates entries by commas
+    - Ignores commas within entries by using delimiters
+    - Handles errors like extra or missing columbs
+    - Doesn't cause any data loss
+    - Complies with schema if provided
+
 - #### 2. Random, On-Demand Generation
 
+    - Validate additional schema
+    - Check edges cases such as numbers written as strings
+    - Test performance with larger CSVs
+
 - #### 3. Overall experience, Bugs encountered and resolved
-#### Errors/Bugs:
-#### Tests:
+#### Errors/Bugs: Was able to fix bug involving accepting schema as parameter. Unable to get schema to show object types. I managed to avoid most bugs by asking an LLM many questions about the concepts.
+#### Tests: Testing was helpful for determining how the parser should be changed.
 #### How To…
 
 #### Team members and contributions (include cs logins):
 
 #### Collaborators (cslogins of anyone you worked with on this project and/or generative AI):
+
+    Used ChatGPT for:
+
+    - Brainstorming ideas for a CSV parser using LLM prompts for Task B
+    - Deeper conceptual explanations of the instructions for Task C
+    - Helping resolve issues with npm test not working (ending up solving on its own after I waited)
+
 #### Total estimated time it took to complete project:
+
+    10 hours
+
 #### Link to GitHub Repo:  
+
+    https://github.com/cs0320-f25/typescript-csv-nikoskoss27.git

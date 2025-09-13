@@ -3,7 +3,7 @@ import * as readline from "readline";
 import { z } from "zod";
 
 /**
- * Parses a CSV file located at `path`. If a ZodSchema is provided, the output will be an array of parsed objects conforming to that schema; otherwise, it yields a 2D array of strings.
+ * Parses a CSV file located at 'path'. If a ZodSchema is provided, the output will be an array of parsed objects conforming to that schema; otherwise, it yields a 2D array of strings.
  * 
  * @param path The path to the file being loaded.
  * @returns a "promise" to produce a 2-d array of cell values

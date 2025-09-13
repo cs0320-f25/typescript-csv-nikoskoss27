@@ -28,10 +28,13 @@ export async function parseCSV<T>(schema: z.ZodSchema<T> | undefined, path: stri
     result.push(values)
   }
 
+  // If no schema is provided, return 2D array of strings.
   if (!schema) return result;
 
+  // Create an array to hold the parsed data.
   const parsedData: T[] = [];
 
+  // Validate and parse each row according to the provided schema.
   for (const row of result) {
     const validation = schema.safeParse(row);
     if (validation.success === false) {

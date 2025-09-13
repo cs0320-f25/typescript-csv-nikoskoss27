@@ -116,7 +116,7 @@
 
     Include a list of the top 4 enhancements or edge cases you think are most valuable to explore in the next week’s sprint. Label them clearly by category (extensibility vs. functionality), and include whether they came from you, the LLM, or both. Describe these using the User Story format—see below for a definition. 
 
-    These 4 enhancements came from me:
+    These four enhancements came from me:
 
     1. Extensibility: As a user, I can parse a CSV with entries that contain commas, using double quotes or a custom delimiter to distinguish between these entries, so I can have data that includes commas.
     2. Extensibility: As a user, I can parse CSVs with or without column headers, being able to specify this to the parser, so either CSVs with or without headers will not break the parser.
@@ -125,7 +125,7 @@
 
     Include your notes from above: what were your initial ideas, what did the LLM suggest, and how did the results differ by prompt? What resonated with you, and what didn’t? (3-5 sentences.)
 
-    My initial ideas included 
+    My initial ideas included the above four enhancements, but the LLM helped refined them. (e.g., I added custom delimiter to the first one instead of just using quotes as delimiters.) The LLM suggested many more that resonated with me, including locale-specific issues (such as the swapping of commas and decimals in other countries), more graceful error recovery, type conversion, and clean up like removal of whitespace. Some ideas didn't resonated with me as much, such as things I didn't fully understand like BOM or features like multi-line column headers (seems like it might add additional complexity to the parser without much benefit). The result Prompt 1 provided diverse feature, edge case, and improvement options; Prompt 2's result focused more on developers' ease of use; and Prompt 3 produced the broadest result due to minimal context provided.
 
 ### Design Choices
 

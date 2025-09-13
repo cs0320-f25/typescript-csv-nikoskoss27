@@ -3,14 +3,7 @@ import * as readline from "readline";
 import { z } from "zod";
 
 /**
- * This is a JSDoc comment. Similar to JavaDoc, it documents a public-facing
- * function for others to use. Most modern editors will show the comment when 
- * mousing over this function name. Try it in run-parser.ts!
- * 
- * File I/O in TypeScript is "asynchronous", meaning that we can't just
- * read the file and return its contents. You'll learn more about this 
- * in class. For now, just leave the "async" and "await" where they are. 
- * You shouldn't need to alter them.
+ * Parses a CSV file located at `path`. If a ZodSchema is provided, the output will be an array of parsed objects conforming to that schema; otherwise, it yields a 2D array of strings.
  * 
  * @param path The path to the file being loaded.
  * @returns a "promise" to produce a 2-d array of cell values
@@ -50,63 +43,3 @@ export async function parseCSV<T>(schema: z.ZodSchema<T> | undefined, path: stri
   return parsedData;
   
 }
-
-
-export const PersonRowSchema = z.tuple([z.string(), z.coerce.number()])
-                         .transform( tup => ({name: tup[0], age: tup[1]}))
-
-
-
-/*
-Name,Credits,Email
-Nikos Koss,8,nikos@example.com
-*/
-
-const studentRowSchema = z.tuple([z.string(), z.coerce.number(), z.email()]).transform( arr => ({
-  name: arr[0],
-  credits: arr[1],
-  email: arr[2]
-}) );
-
-
-type StudentRow = z.infer<typeof studentRowSchema>;
-
-
-const studentResult = studentRowSchema.safeParse(["Nikos Koss", "8", "nikos@example.com"]);
-const student: StudentRow | undefined = studentResult.data
-
-// if(student !== undefined) {
-//   console.log(student[0])
-// }
-
-// if(studentResult.success) {
-//   console.log(student[0])
-// }
-
-
-
-const jsonString = `{
-  "name": "Nikos Koss",
-  "credits": "8",
-  "email": "nikos@example.com"
-}`;
-
-const nikos = JSON.parse(jsonString);
-
-nikos.name
-nikos.age = "20";
-nikos.credits = 8
-
-console.log(nikos.name.size)
-
-
-// use zod to fix removing "any" type without validation
-const nikosSchema = z.object({
-  name: z.string(),
-  age: z.string(),
-  credits: z.string(),
-  email: z.string()
-});
-
-nikosSchema.safeParse(nikos);
-
